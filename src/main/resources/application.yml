@@ -1,0 +1,31 @@
+server:
+  port: 9999
+  servlet:
+    context-path: /taskmanager
+
+spring:
+  application:
+    name: task-manager
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: admin
+    password: secret
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
+
+logging:
+  level:
+    ROOT: INFO
+    org.apirest.taskmanager: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: loggers,metrics,prometheus
